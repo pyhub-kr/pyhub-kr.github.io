@@ -4,7 +4,6 @@
 <head>
 <meta charset="utf-8" />
 <title>[레벨2] Ajax 렌더링 크롤링</title>
-<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script>
     (async function() {
         const response = await fetch("lv2-data.json");
@@ -12,12 +11,12 @@
 
         response_obj["it-general"].forEach(function(course) {
             const html = '<li class="course"><a href="' + course.url + '">' + course.title + '</a></li>';
-            document.querySelector('#it-general').innerHTML += html;
+            document.querySelector('#it-general ul').innerHTML += html;
         });
 
         response_obj["life"].forEach(function(course) {
             const html = '<li class="course"><a href="' + course.url + '">' + course.title + '</a></li>';
-            document.querySelector('#life').innerHTML += html;
+            document.querySelector('#life ul').innerHTML += html;
         });
     })();
 
@@ -30,13 +29,15 @@
 
 <p>본 페이지는 Ajax를 통해 데이터를 받아와서, 자바스크립트로 컨텐츠가 추가됩니다.</p>
 
-<h3>IT 일반</h3>
+<div id="it-general" class="category">
+    <h3>IT 일반</h3>
+    <ul></ul>
+</div>
 
-<ul id="it-general"></ul>
-
-<h3>생활/문화</h3>
-
-<ul id="life"></ul>
+<div id="life" class="category">
+    <h3>생활/문화</h3>
+    <ul></ul>
+</div>
 
 <hr/>
 
